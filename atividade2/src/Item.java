@@ -1,12 +1,12 @@
 public class Item {
-    private int preco;
+    private int qtd;
     private String vendedor;
     private int estoque;
     private String avaliacoes;
     private Produto produto;
 
-    public Item(int preco, String vendedor, int estoque, String avaliacoes, Produto produto){
-        this.preco = preco;
+    public Item(int qtd, String vendedor, int estoque, String avaliacoes, Produto produto){
+        this.qtd = qtd;
         this.vendedor = vendedor;
         this.estoque = estoque;
         this.avaliacoes = avaliacoes;
@@ -14,7 +14,7 @@ public class Item {
     }
     
     public int getPreco() {
-        return preco;
+        return produto.getPreco()*qtd;
     }
     public String getVendedor() {
         return vendedor;
@@ -29,9 +29,6 @@ public class Item {
         return produto;
     }
 
-    public void setPreco(int preco) {
-        this.preco = preco;
-    }
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }

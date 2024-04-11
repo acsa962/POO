@@ -7,7 +7,7 @@ public class Pedido {
     private boolean conf_pag; //confirmação de pagamento
     private  ArrayList<Item> itens = new ArrayList<>();
 
-    public Pedido(int precoTot, int frete, String transportadora, boolean conf_pag, Item item){
+    public Pedido(String transportadora, boolean conf_pag, Item item){
         this.precoTot = precoTot;
         this.frete = frete;
         this.transportadora = transportadora;
@@ -44,6 +44,7 @@ public class Pedido {
     public void setTransportadora(String transportadora) {
         this.transportadora = transportadora;
     }
+
 
 
     

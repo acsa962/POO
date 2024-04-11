@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         
-        PessoaFisica pf = new PessoaFisica(scan.nextLine(), scan.nextLine(),scan.nextLine(), scan.nextLine());
+        Pessoa pf = new Fisica(scan.nextLine(), scan.nextLine(),scan.nextLine(), scan.nextLine());
 
-        PessoaJuridica pj = new PessoaJuridica(scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine());
+        Pessoa pj = new Juridica(scan.nextLine(), scan.nextLine(), scan.nextLine(), scan.nextLine());
         
         System.out.println("\n\n");
         

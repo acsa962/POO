@@ -1,13 +1,16 @@
 public class Produto{
     private String nome;
     private int peso; 
+    private int preco;
     private String marca;
     private String modelo;
     private String detalhes;
 
-    public Produto(String nome, int peso, String marca, String modelo, String detalhes){
+
+    public Produto(String nome, int preco, int peso, String marca, String modelo, String detalhes){
         this.nome = nome;
         this.peso = peso;
+        this.preco = preco;
         this.marca = marca;
         this.modelo = modelo;
         this.detalhes = detalhes;
@@ -29,6 +32,9 @@ public class Produto{
     public String getDetalhes() {
         return detalhes;
     }
+    public int getPreco() {
+        return preco;
+    }
 
     
     public void setNome(String nome) {
@@ -45,6 +51,9 @@ public class Produto{
     }
     public void setDetalhes(String detalhes) {
         this.detalhes = detalhes;
+    }
+    public void setPreco(int preco) {
+        this.preco = preco;
     }
 
 }
