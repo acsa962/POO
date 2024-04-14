@@ -23,9 +23,9 @@ public class Pessoa {
         this.email = email;
     }
 
-    public void boletim(){
-        System.out.println("Nome = " + this.nome);
-        System.out.println("Email = " + this.email);
+    @Override
+    public String toString() {
+        return "nome: " + this.nome + "\temail: " + this.email;
     }
 
 

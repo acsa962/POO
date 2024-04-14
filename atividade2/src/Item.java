@@ -1,29 +1,25 @@
 public class Item {
     private int qtd;
-    private String vendedor;
+    private Pessoa vendedor;
     private int estoque;
-    private String avaliacoes;
     private Produto produto;
 
-    public Item(int qtd, String vendedor, int estoque, String avaliacoes, Produto produto){
+    public Item(int qtd, Pessoa vendedor, int estoque, Produto produto){
         this.qtd = qtd;
         this.vendedor = vendedor;
-        this.estoque = estoque;
-        this.avaliacoes = avaliacoes;
+        this.estoque = estoque - qtd;
         this.produto = produto;
     }
+
     
-    public int getPreco() {
+    public float getPreco() {
         return produto.getPreco()*qtd;
     }
-    public String getVendedor() {
+    public Pessoa getVendedor() {
         return vendedor;
     }
     public int getEstoque() {
         return estoque;
-    }
-    public String getAvaliacoes() {
-        return avaliacoes;
     }
     public Produto getProduto() {
         return produto;
@@ -32,13 +28,13 @@ public class Item {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
-    }
-    public void setAvaliacoes(String avaliacoes) {
-        this.avaliacoes = avaliacoes;
-    }
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+
+
+    @Override
+    public String toString() {
+        System.out.println(produto);
+        System.out.println("\nDETALHES DO ITEM");
+        System.out.println("Vendedor-> " + vendedor);
+        return "Quantidade: " + this.qtd + "\tEstoque: " + this.estoque + "\n||||||||||||||||||||||||||";
     }
 }

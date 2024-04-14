@@ -1,19 +1,17 @@
 public class Produto{
     private String nome;
     private int peso; 
-    private int preco;
+    private float preco;
     private String marca;
     private String modelo;
-    private String detalhes;
 
 
-    public Produto(String nome, int preco, int peso, String marca, String modelo, String detalhes){
+    public Produto(String nome, int preco, int peso, String marca, String modelo){
         this.nome = nome;
         this.peso = peso;
         this.preco = preco;
         this.marca = marca;
         this.modelo = modelo;
-        this.detalhes = detalhes;
     }  
 
 
@@ -29,10 +27,7 @@ public class Produto{
     public int getPeso() {
         return peso;
     }
-    public String getDetalhes() {
-        return detalhes;
-    }
-    public int getPreco() {
+    public float getPreco() {
         return preco;
     }
 
@@ -49,11 +44,13 @@ public class Produto{
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public void setDetalhes(String detalhes) {
-        this.detalhes = detalhes;
-    }
-    public void setPreco(int preco) {
-        this.preco = preco;
+
+
+    @Override
+    public String toString() {
+        System.out.println("PRODUTO");
+        return "|Nome: " + this.nome + "\n|Peso: " + this.peso + "g"+ "\n|Marca: " + this.marca + 
+        "\n|Modelo: " + this.modelo;
     }
 
 }

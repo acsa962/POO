@@ -25,11 +25,9 @@ public class Fisica extends Pessoa {
     }
 
     @Override
-    public void boletim() {
-        System.out.println("BOLETIM PESSOA FISICA");
-        super.boletim();
-        System.out.println("CNPJ = " + this.cpf);
-        System.out.println("Nome Fantasia = " + this.telefone);
+    public String toString() {
+        System.out.println("DETALHES DO CLIENTE");
+        return super.toString() + "\tcpf: " + this.cpf + "\ttelefone: " + this.telefone;
     }
 
 }

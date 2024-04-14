@@ -1,42 +1,37 @@
 import java.util.ArrayList;
 
 public class Pedido {
-    private int precoTot;
-    private int frete;
+    private int id;
+    private float precoTot;
     private String transportadora;
-    private boolean conf_pag; //confirmação de pagamento
     private  ArrayList<Item> itens = new ArrayList<>();
 
-    public Pedido(String transportadora, boolean conf_pag, Item item){
-        this.precoTot = precoTot;
-        this.frete = frete;
+    public Pedido(int id, String transportadora, Item item){
+        this.id = id;
+        this.precoTot += item.getPreco();
         this.transportadora = transportadora;
-        this.conf_pag = conf_pag;
         itens.add(item);
     }
 
-    public addItem(Item item){
+    public void addItem(Item item){
         itens.add(item);
+        precoTot += item.getPreco();
     }
 
-    public removeItem(Item item){
+    public void removeItem(Item item){
         itens.remove(item);
+        precoTot -= item.getPreco();
     }
 
-    public int getFrete() {
-        return frete;
+    public int getId() {
+        return id;
     }
-    public int getPrecoTot() {
+
+    public float getPrecoTot() {
         return precoTot;
     }
     public String getTransportadora() {
         return transportadora;
-    }
-    public void setConf_pag(boolean conf_pag) {
-        this.conf_pag = conf_pag;
-    }
-    public void setFrete(int frete) {
-        this.frete = frete;
     }
     public void setPrecoTot(int precoTot) {
         this.precoTot = precoTot;
@@ -44,9 +39,23 @@ public class Pedido {
     public void setTransportadora(String transportadora) {
         this.transportadora = transportadora;
     }
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
-
+    @Override
+    public String toString() {
+        System.out.println("PEDIDO " + id);
+        int aux = 1;
+        for(Item item : itens){
+            System.out.printf("ITEM %d\n", aux);
+            System.out.println(item + "\n");
+            aux+=1;
+        }
+        System.out.println("DETALHES DO PEDIDO");
+        return "Preco total: R$" + this.precoTot + "\tTransportadora: " + this.transportadora;
+    }
     
 }
 

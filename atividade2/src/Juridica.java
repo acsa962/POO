@@ -25,10 +25,7 @@ public class Juridica extends Pessoa{
     }
 
     @Override
-    public void boletim() {
-        System.out.println("BOLETIM PESSOA JURIDICA");
-        super.boletim();
-        System.out.println("CNPJ = " + this.cnpj);
-        System.out.println("Nome Fantasia = " + this.fantasia);
+    public String toString() {
+        return super.toString() + "\tcnpj: " + this.cnpj + "\tnome fantasia: " + this.fantasia;
     }
 }
