@@ -34,7 +34,7 @@ public class Item {
     public String toString() {
         System.out.println(produto);
         System.out.println("\nDETALHES DO ITEM");
-        System.out.println("Vendedor-> " + vendedor);
+        System.out.println("Vendedor-> " + ((Juridica)vendedor));
         return "Quantidade: " + this.qtd + "\tEstoque: " + this.estoque + "\n||||||||||||||||||||||||||";
     }
 }

@@ -5,6 +5,8 @@ public class Produto{
     private String marca;
     private String modelo;
 
+    
+
 
     public Produto(String nome, int preco, int peso, String marca, String modelo){
         this.nome = nome;

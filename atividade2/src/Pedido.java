@@ -53,7 +53,7 @@ public class Pedido {
             System.out.println(item + "\n");
             aux+=1;
         }
-        System.out.println("DETALHES DO PEDIDO");
+        System.out.println("\n\nDETALHES DO PEDIDO");
         return "Preco total: R$" + this.precoTot + "\tTransportadora: " + this.transportadora;
     }
     
