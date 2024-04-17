@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Item {
     private int qtd;
     private Pessoa vendedor;
@@ -27,6 +29,19 @@ public class Item {
 
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+
+    public static  Item itemBuilder(){
+        Produto produto = Produto.produtoBuider(); 
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Insira dos dados do item:");
+        int qtd = scan.nextInt();
+        scan.nextLine();
+        int estoque = scan.nextInt();
+        scan.nextLine();
+        Item item = new Item(qtd, Juridica.vendedorBuilder(), estoque, produto);
+        scan.close();
+        return item;
     }
 
 

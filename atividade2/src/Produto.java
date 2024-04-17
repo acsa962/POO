@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Produto{
     private String nome;
     private int peso; 
@@ -6,8 +8,6 @@ public class Produto{
     private String modelo;
 
     
-
-
     public Produto(String nome, int preco, int peso, String marca, String modelo){
         this.nome = nome;
         this.peso = peso;
@@ -45,6 +45,21 @@ public class Produto{
     }
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public static Produto produtoBuider(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Insira os dados do produto:");
+        String nome = scan.nextLine();
+        int preco = scan.nextInt();
+        scan.nextLine();
+        int peso = scan.nextInt();
+        scan.nextLine();
+        String marca = scan.nextLine();
+        String modelo = scan.nextLine();
+        Produto produto = new Produto(nome, preco, peso, marca, modelo);
+        scan.close();
+        return produto;
     }
 
 
