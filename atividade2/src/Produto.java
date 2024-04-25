@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Produto{
+public class Produto implements Estilo{
     private String nome;
     private int peso; 
     private float preco;
@@ -48,17 +48,21 @@ public class Produto{
     }
 
     public static Produto produtoBuider(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Insira os dados do produto:");
+        Scanner scan = Estilo.abrirScan();
+        System.out.println("Insira os dados do produto");
+        System.out.print("Nome:");
         String nome = scan.nextLine();
+        System.out.print("Preço:");
         int preco = scan.nextInt();
         scan.nextLine();
+        System.out.print("Peso:");
         int peso = scan.nextInt();
         scan.nextLine();
+        System.out.print("Marca:");
         String marca = scan.nextLine();
+        System.out.print("Modelo:");
         String modelo = scan.nextLine();
         Produto produto = new Produto(nome, preco, peso, marca, modelo);
-        scan.close();
         return produto;
     }
 

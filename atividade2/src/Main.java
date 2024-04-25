@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Estilo{
     public static void main(String[] args) throws Exception {
-        Scanner scan = new Scanner(System.in);
-
+        Scanner scan = Estilo.abrirScan();
+        System.out.println("Dados do Cliente");
+        System.out.print("Nome:"); 
         String nome = scan.nextLine();
+        System.out.print("Email:");
         String email = scan.nextLine();
+        System.out.print("CPF:");
         String cpf = scan.nextLine();
+        System.out.print("Telefone:");
         String telefone = scan.nextLine();
 
         Pessoa cliente = new Fisica(nome, email, cpf, telefone);
@@ -18,38 +22,8 @@ public class Main {
         System.out.println("\n#######################\n");
         System.out.println("Insira as informações dos produtos");
 
-        //Produto(String nome, int preco, int peso, String marca, String modelo)
-        /*nome = scan.nextLine();
-        int preco = scan.nextInt();
-        int peso = scan.nextInt();
-        String marca = scan.nextLine();
-        String modelo = scan.nextLine(); 
-
-        Produto p1 = new Produto(nome, preco, peso, marca, modelo);*/
-
-        //Item(int qtd, Pessoa vendedor, int estoque, Produto produto)
-        /*int qtd = scan.nextInt();
-        int estoque = scan.nextInt();
-        Item i1 = new Item(qtd, vendedor, estoque, p1);
-
-        String nomeP2 = scan.nextLine();
-        preco = scan.nextInt();
-        peso = scan.nextInt();
-        marca = scan.nextLine();
-        modelo = scan.nextLine(); 
-        Produto p2 = new Produto(nome, preco, peso, marca, modelo);
-
-        qtd = scan.nextInt();
-        estoque = scan.nextInt();        
-        Item i2 = new Item(qtd, vendedor,estoque, p2);
-
-        String transp = scan.nextLine();
-        Pedido pedido = new Pedido(001,transp, i1);
-        pedido.addItem(i2);*/
-
-        
         System.out.println(Pedido.prodBuilder());
         
-        scan.close();
+        Estilo.fecharScan(scan);
     }
 }

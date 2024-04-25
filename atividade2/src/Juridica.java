@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Juridica extends Pessoa{
+public class Juridica extends Pessoa implements Estilo{
     private String cnpj;
     private String fantasia;
 
@@ -27,13 +27,17 @@ public class Juridica extends Pessoa{
     }
 
     public static Juridica vendedorBuilder(){
-        Scanner scan = new Scanner(System.in);
-        String nome = scan.nextLine(); 
+        Scanner scan = Estilo.abrirScan();
+        System.out.println("Dados pessoa Jurídica");
+        System.out.print("Nome:");
+        String nome = scan.nextLine();
+        System.out.print("Email:"); 
         String email = scan.nextLine();
+        System.out.print("CNPJ:");
         String cnpj = scan.nextLine();
+        System.out.print("Nome fantasia:");
         String fantasia = scan.nextLine();
         Juridica vendedor = new Juridica(nome, email, cnpj, fantasia);
-        scan.close();
         return vendedor;
     }
 

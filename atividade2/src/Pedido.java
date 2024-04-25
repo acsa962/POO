@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Pedido {
+public class Pedido implements Estilo{
     private float precoTot;
     private String transportadora;
     private  ArrayList<Item> itens = new ArrayList<>();
@@ -21,7 +21,10 @@ public class Pedido {
         itens.remove(item);
         precoTot -= item.getPreco();
     }
-    public float getPrecoTot() {
+    public float getPrecoTot(ArrayList<Item>itens) {
+        for(Item item: itens){
+            precoTot+= item.getPreco();
+        }
         return precoTot;
     }
     public String getTransportadora() {
@@ -36,29 +39,29 @@ public class Pedido {
 
     public static Pedido prodBuilder(){
         Item item = Item.itemBuilder(); 
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = Estilo.abrirScan();
+        System.out.print("Transportadora:");
         String transportadora = scan.nextLine();
         Pedido pedido = new Pedido(transportadora, item);
         System.out.println("Deseja acrescentar um novo item(0 = sim/1 = não)");
-        String aux;
-        aux = "a";
+        int aux = -1;
         do{
-            aux = scan.nextLine();
+            aux = Integer.parseInt(scan.nextLine());
             System.out.println("Digite 0 para sim ou 1 para não: ");
-        } while(aux != "0" | aux!="1");
+        } while(aux != 0 && aux!=1);
         
-        if(aux == "0") {
-            
+        if(aux == 0) {
+            System.out.println("NOVO ITEM");
+            Item it = Item.itemBuilder();
+            pedido.addItem(it);
         }
-
-        scan.close();
         return pedido;
     }
 
 
     @Override
     public String toString() {
-        System.out.println("PEDIDO");
+        System.out.println("\n\nPEDIDO");
         int aux = 1;
         for(Item item : itens){
             System.out.printf("ITEM %d\n", aux);
@@ -70,5 +73,4 @@ public class Pedido {
     }
     
 }
-
 
