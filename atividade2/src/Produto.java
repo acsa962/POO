@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Produto implements Estilo{
+public class Produto implements EstiloI{
     private String nome;
     private int peso; 
     private float preco;
@@ -48,7 +48,7 @@ public class Produto implements Estilo{
     }
 
     public static Produto produtoBuider(){
-        Scanner scan = Estilo.abrirScan();
+        Scanner scan = EstiloI.abrirScan();
         System.out.println("Insira os dados do produto");
         System.out.print("Nome:");
         String nome = scan.nextLine();

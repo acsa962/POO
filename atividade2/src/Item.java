@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Item implements Estilo{
+public class Item implements EstiloI{
     private int qtd;
     private Pessoa vendedor;
     private int estoque;
@@ -17,8 +17,8 @@ public class Item implements Estilo{
     public float getPreco() {
         return produto.getPreco()*qtd;
     }
-    public Pessoa getVendedor() {
-        return vendedor;
+    public String getVendedor() {
+        return vendedor.toString();
     }
     public int getEstoque() {
         return estoque;
@@ -33,10 +33,10 @@ public class Item implements Estilo{
 
     public static  Item itemBuilder(){
         Produto produto = Produto.produtoBuider(); 
-        Scanner scan = Estilo.abrirScan();
+        Scanner scan = EstiloI.abrirScan();
         System.out.println("Insira dos dados do item:");
         int qtd = 0;
-        int estoque = 0;
+        int estoque = -2;
         while(qtd>estoque){
             System.out.print("Estoque:");
             estoque = scan.nextInt();
@@ -54,7 +54,7 @@ public class Item implements Estilo{
     public String toString() {
         System.out.println(produto);
         System.out.println("\nDETALHES DO ITEM");
-        //System.out.println("Vendedor-> " + ((Juridica)vendedor));
-        return "Quantidade: " + this.qtd + "\tEstoque: " + this.estoque + "\n||||||||||||||||||||||||||";
+        System.out.println("Vendedor-> " + ((Juridica)vendedor));
+        return "Quantidade: " + this.qtd + "\tEstoque: " + this.estoque;
     }
 }

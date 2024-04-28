@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
-public interface Estilo {
+public interface EstiloI {
     Scanner scan = new Scanner(System.in);
-    
     public static Scanner abrirScan(){
         return scan;
     }

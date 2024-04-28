@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Pedido implements Estilo{
+public class Pedido implements EstiloI{
     private float precoTot;
     private String transportadora;
     private  ArrayList<Item> itens = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Pedido implements Estilo{
 
     public static Pedido prodBuilder(){
         Item item = Item.itemBuilder(); 
-        Scanner scan = Estilo.abrirScan();
+        Scanner scan = EstiloI.abrirScan();
         System.out.print("Transportadora:");
         String transportadora = scan.nextLine();
         Pedido pedido = new Pedido(transportadora, item);
@@ -51,7 +51,7 @@ public class Pedido implements Estilo{
         } while(aux != 0 && aux!=1);
         
         if(aux == 0) {
-            System.out.println("NOVO ITEM");
+            System.out.println("\nNOVO ITEM");
             Item it = Item.itemBuilder();
             pedido.addItem(it);
         }
@@ -68,7 +68,9 @@ public class Pedido implements Estilo{
             System.out.println(item + "\n");
             aux+=1;
         }
+        System.out.println("\n||||||||||||||||||||||||||");
         System.out.println("\n\nDETALHES DO PEDIDO");
+        
         return "Preco total: R$" + this.precoTot + "\tTransportadora: " + this.transportadora;
     }
     
