@@ -1,3 +1,4 @@
+package POO1.atividade1.src;
 public class Cliente {
     private String nome;
     private String email;

@@ -1,3 +1,4 @@
+package POO1.atividade1.src;
 public class PessoaJuridica extends Cliente{
     private String cnpj;
     private String fantasia;

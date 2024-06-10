@@ -1,3 +1,4 @@
+package POO1.atividade1.src;
 import java.util.Scanner;
 
 public class Main {
