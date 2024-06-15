@@ -4,26 +4,26 @@ import java.util.Scanner;
 public class Pedido implements EstiloI{
     private float precoTot;
     private String transportadora;
-    private  ArrayList<Item> itens = new ArrayList<>();
+    private  AList<Item> itens = new ArrayList<>();
 
     public Pedido(String transportadora, Item item){
-        this.precoTot += item.getPreco();
+        this.precoTot += item.getPrecoProduto();
         this.transportadora = transportadora;
         itens.add(item);
     }
 
     public void addItem(Item item){
         itens.add(item);
-        precoTot += item.getPreco();
+        precoTot += item.getPrecoProduto();
     }
 
     public void removeItem(Item item){
         itens.remove(item);
-        precoTot -= item.getPreco();
+        precoTot -= item.getPrecoProduto();
     }
     public float getPrecoTot(ArrayList<Item>itens) {
         for(Item item: itens){
-            precoTot+= item.getPreco();
+            precoTot+= item.getPrecoProduto();
         }
         return precoTot;
     }
@@ -37,7 +37,7 @@ public class Pedido implements EstiloI{
         this.transportadora = transportadora;
     }
 
-    public static Pedido prodBuilder(){
+    public static Pedido pedidoBuilder(){
         Item item = Item.itemBuilder(); 
         Scanner scan = EstiloI.abrirScan();
         System.out.print("Transportadora:");

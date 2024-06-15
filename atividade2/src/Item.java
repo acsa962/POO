@@ -15,7 +15,7 @@ public class Item implements EstiloI{
 
     
     public float getPreco() {
-        return produto.getPreco()*qtd;
+        return produto.getPrecoProduto()*qtd;
     }
     public String getVendedor() {
         return vendedor.toString();

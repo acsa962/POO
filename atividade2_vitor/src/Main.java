@@ -22,7 +22,7 @@ public class Main implements IUtil{
         if(decisao){
             System.out.println("Digite o CPF:");
             aux = scan.nextLine();
-            Fisica novoPF = new Fisica(nome, email, telefone, aux);
+            Fisico novoPF = new Fisico(nome, email, telefone, aux);
             pedido.setComprador(nome, email, telefone, aux, decisao);
             System.out.println(novoPF.toString());
             System.out.println();
@@ -55,7 +55,7 @@ public class Main implements IUtil{
             System.out.println("\nMuito obrigado por comprar conosco!");
             System.out.println(pedido);
             System.out.println("Comprador: " + pedido.getComprador().getNome() + "\t\tE-mail: " + pedido.getComprador().getEmail());
-            System.out.println("Método de Pagamento: " + pedido.getMetodoPagamento() + "\t\tValor total: " + String.format("%.2f", pedido.getValorTotal()) + 
+            System.out.println("Método de Pagamento: " + pedido.getMetodoPagamento() + "\t\tValor total: " + String.format("%.2f", pedido.getPrecoTotalItem()) + 
             "\n____________________________________________________________");
         }
         

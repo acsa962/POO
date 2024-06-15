@@ -21,7 +21,7 @@ public class Main implements EstiloI{
         System.out.println("CLIENTE");
         System.out.println(((Fisica)cliente));
         System.out.println("\n\n");
-        System.out.println(Pedido.prodBuilder());
+        System.out.println(Pedido.pedidoBuilder());
         
         EstiloI.fecharScan(scan);
     }

@@ -20,7 +20,7 @@ public class Pedido implements IUtil{
             this.comprador = new Juridica(nome, email, telefone, aux);
         }
         else{
-            this.comprador = new Fisica(nome, email, telefone, aux);
+            this.comprador = new Fisico(nome, email, telefone, aux);
         }
     }
     public void setData(String data) {
