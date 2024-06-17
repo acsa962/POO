@@ -13,6 +13,10 @@ public class FachadaArquivoTest {
         assertEquals("1", linha[0]); // Verifique se o primeiro campo é igual ao esperado
     }
 
+
+    /*
+    * Testa a saída para o primeiro produto
+    */
     @Test
     public void testLerProdutos() {
         List<Produto> produtos = FachadaArquivo.lerProdutos();
@@ -22,9 +26,13 @@ public class FachadaArquivoTest {
         
         Produto primeiroProduto = produtos.get(0);
         assertEquals(1, primeiroProduto.getIdProduto());
-        assertEquals("NomeProduto1", primeiroProduto.getNome()); // Substitua pelos valores esperados
+        assertEquals("Celular", primeiroProduto.getNome());
     }
 
+
+    /*
+    * Testa a saída para o primeiro cliente
+    */
     @Test
     public void testLerClientes() {
         List<Cliente> clientes = FachadaArquivo.lerClientes();
@@ -34,6 +42,6 @@ public class FachadaArquivoTest {
         
         Cliente primeiroCliente = clientes.get(0);
         assertEquals(1, primeiroCliente.getIdCliente());
-        assertEquals("NomeCliente1", primeiroCliente.getNome()); // Substitua pelos valores esperados
+        assertEquals("João Silva", primeiroCliente.getNome());
     }
 }
