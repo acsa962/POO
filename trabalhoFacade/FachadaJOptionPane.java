@@ -3,7 +3,7 @@ package trabalhoFacade;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class FachadaJOptionsPane {
+public class FachadaJOptionPane {
 
     /*
      * Exibe uma janela comum com uma mensagem e título desejados
@@ -49,7 +49,7 @@ public class FachadaJOptionsPane {
             
             // Verifica se o input é null (usuário clicou em "Cancel" ou fechou a caixa de diálogo)
             if (input == null){
-                FachadaJOptionsPane.finalizarPrograma("Encerrando pedido...", "Encerrando"); // Retorna null se o usuário cancelou a operação
+                FachadaJOptionPane.finalizarPrograma("Encerrando pedido...", "Encerrando"); // Retorna null se o usuário cancelou a operação
                 return -1; // Retorna um valor indicativo de cancelamento
             } 
             else {
@@ -83,7 +83,7 @@ public class FachadaJOptionsPane {
         if (produtoSelecionado instanceof Produto) {
             return (Produto) produtoSelecionado;   // Converte para Produto se foi selecionado
         } else {
-            FachadaJOptionsPane.finalizarPrograma("Encerrando pedido...", "Encerrando");   // Retorna null se o usuário cancelou a operação
+            FachadaJOptionPane.finalizarPrograma("Encerrando pedido...", "Encerrando");   // Retorna null se o usuário cancelou a operação
             return null;
         }
     }
@@ -102,7 +102,7 @@ public class FachadaJOptionsPane {
      * Exibe uma janela com o texto desejado e finaliza o programa com status 0
     */
     public static void finalizarPrograma(String mensagem, String titulo){
-        FachadaJOptionsPane.exibirMensagemComum(mensagem, titulo);
+        FachadaJOptionPane.exibirMensagemComum(mensagem, titulo);
         System.exit(0);
     }
 }

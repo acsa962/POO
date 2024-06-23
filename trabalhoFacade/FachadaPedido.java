@@ -14,7 +14,7 @@ public class FachadaPedido{
      * Retorna uma janela com a sequência de produtos já lidos do arquivo produto.csv
     */
     private static Produto produtoBuilder(){
-        return FachadaJOptionsPane.selecionaProduto(FachadaArquivo.lerProdutos());
+        return FachadaJOptionPane.selecionaProduto(FachadaArquivo.lerProdutos());
     }
 
 
@@ -23,22 +23,22 @@ public class FachadaPedido{
      * Após isso, escreve as informações do item no arquivo item.csv
     */
     private static void itemBuilder(){
-        
+
         // Constrói um produto
         produto = produtoBuilder();
         
-        int quantidade = FachadaJOptionsPane.lerInteiro("Quantidade:");
+        int quantidade = FachadaJOptionPane.lerInteiro("Quantidade:");
 
         // Verifica se a quantidade digitada é maior que a quantidade presente no estoque
-        if (quantidade < 1) FachadaJOptionsPane.finalizarPrograma("Quantidade inválida!" , "Erro");
-        else if (quantidade > produto.getEstoque())FachadaJOptionsPane.finalizarPrograma("Tente novamente mais tarde.", "Estoque insuficiente");
+        if (quantidade < 1) FachadaJOptionPane.finalizarPrograma("Quantidade inválida!" , "Erro");
+        else if (quantidade > produto.getEstoque())FachadaJOptionPane.finalizarPrograma("Tente novamente mais tarde.", "Estoque insuficiente");
 
         // Cria a instância de Item
         item = new Item(Item.iteraContadorItem(), produto, quantidade);
         
         // Monta a string de escrita no arquivo item.csv
         String itemStringCSV = item.getId() + "," + item.getQuantidade() + "," + item.getProduto().getIdProduto() + "," + item.getPrecoTotalItem() + "\n";
-        
+
         // Adiciona a linha do novo item no final do arquivo item.csv
         FachadaArquivo.escreverArquivo(Constantes.caminhoItemCSV, itemStringCSV);
     }
@@ -60,7 +60,7 @@ public class FachadaPedido{
             // Adiciona o ID do item construído na lista de ID
             idItens.add(item.getId());
 
-        }while(FachadaJOptionsPane.exibirMensagemBotao("Deseja adicionar um novo item?", "Não", "Sim", "Confirmação") == 1);
+        }while(FachadaJOptionPane.exibirMensagemBotao("Deseja adicionar um novo item?", "Não", "Sim", "Confirmação") == 1);
 
 
         // Cria a instância do pedido
@@ -77,6 +77,7 @@ public class FachadaPedido{
         // Constrói o pedido
         pedidoBuilder();
 
-        FachadaJOptionsPane.finalizarPrograma(pedido.toString(), "Pedido finalizado!");
+        // Finaliza o programa, exibindo o toString() do pedido, que é onde ficam as informações da nota fiscal
+        FachadaJOptionPane.finalizarPrograma(pedido.toString(), "Pedido finalizado!");
     }
 }

@@ -34,8 +34,8 @@ public class Cliente {
     @Override
     public String toString(){
         return "_________________________________________________________________________________________________\n"+
-        "Cliente: \n" + 
-        String.format("%-20s",this.nome) + String.format("%-35s",this.email) + "\t";
+        "Informações do cliente: \n" + 
+        "Nome: " + String.format("%s",this.nome) + "\nE-mail: " + String.format("%s",this.email) + "\n";
     }
     
 }

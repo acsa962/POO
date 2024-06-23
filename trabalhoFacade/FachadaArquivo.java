@@ -10,46 +10,31 @@ public class FachadaArquivo {
     /*
      * Lê a linha especificada do arquivo especificado, retornando um Array com os dados já separados a cada vírgula
     */
-    public static String[] lerArquivoLinha(String caminhoArquivo, int linhaQuery){
+    public static String[] lerArquivoLinha(String caminhoArquivo, int linhaQuery) {
         // Cria as variáveis e objetos necessários
-        BufferedReader leitor = null;
         String stringBuffer;
         String[] linhaBuffer = null;
-        int i = 1;
-
-        try{
-            // Cria um objeto leitor com BufferedReader
-            leitor = new BufferedReader(new FileReader(caminhoArquivo));
-
+    
+        try (BufferedReader leitor = new BufferedReader(new FileReader(caminhoArquivo))) {
             // Lê a linha especificada no parâmetro e separa os dados por vírgula, cada dado em uma posição do Array
-            while(true){
-                if(i == linhaQuery){
-                    stringBuffer = leitor.readLine();
-                    linhaBuffer = stringBuffer.split(",");
-                    break;
+            while ((stringBuffer = leitor.readLine()) != null) {
+                linhaBuffer = stringBuffer.split(",");
+                if (Integer.parseInt(linhaBuffer[0]) == linhaQuery) {
+                    return linhaBuffer; // Retorna a linha correspondente à linha especificada
                 }
-                i++;
             }
+        } 
+        catch (FileNotFoundException e) {
+            FachadaJOptionPane.exibirMensagemError("Arquivo não encontrado!", null);
+        } catch (IOException e) {
+            FachadaJOptionPane.exibirMensagemError("Erro ao manusear arquivo.", null);
+        } catch (Exception e) {
+            FachadaJOptionPane.exibirMensagemError("Erro!!!!", null);
         }
-        catch(FileNotFoundException e){
-            FachadaJOptionsPane.exibirMensagemError("Arquivo não encontrado!", null);
-        }
-        catch(IOException e){
-            FachadaJOptionsPane.exibirMensagemError("Erro ao manusear arquivo.", null);
-        }
-        catch(Exception e){
-            FachadaJOptionsPane.exibirMensagemError("Erro!!!!", null);
-        }
-        finally{
-            try{
-                leitor.close();
-            }
-            catch(IOException e){
-                FachadaJOptionsPane.exibirMensagemError("Erro ao manusear arquivo.", null);
-            }  
-        }
-        return linhaBuffer;
+    
+        return null; // Retorna null se a linha não foi encontrada
     }
+    
 
 
     /*
@@ -76,13 +61,13 @@ public class FachadaArquivo {
                 produtos.add(produto);                      // Adciona o produto criado à lista de produtos
             }
         } catch(FileNotFoundException e){
-            FachadaJOptionsPane.exibirMensagemError("Arquivo não encontrado!", null);
+            FachadaJOptionPane.exibirMensagemError("Arquivo não encontrado!", null);
         }
         catch(IOException e){
-            FachadaJOptionsPane.exibirMensagemError("Erro ao manusear arquivo.", null);
+            FachadaJOptionPane.exibirMensagemError("Erro ao manusear arquivo.", null);
         }
         catch(Exception e){
-            FachadaJOptionsPane.exibirMensagemError("Erro!", null);
+            FachadaJOptionPane.exibirMensagemError("Erro!", null);
         }
         return produtos;
     }
@@ -101,13 +86,13 @@ public class FachadaArquivo {
             escritor.append(linhaTexto);
         }
         catch(FileNotFoundException e){
-            FachadaJOptionsPane.exibirMensagemError("Arquivo não encontrado!", null);
+            FachadaJOptionPane.exibirMensagemError("Arquivo não encontrado!", null);
         }
         catch(IOException e){
-            FachadaJOptionsPane.exibirMensagemError("Erro ao manusear arquivo.", null);
+            FachadaJOptionPane.exibirMensagemError("Erro ao manusear arquivo.", null);
         }
         catch(Exception e){
-            FachadaJOptionsPane.exibirMensagemError("Erro!", null);
+            FachadaJOptionPane.exibirMensagemError("Erro!", null);
         }
         finally{
             if (escritor != null){
@@ -115,10 +100,32 @@ public class FachadaArquivo {
                     escritor.close(); // Fecha o FileWriter após a operação
                 } 
                 catch (IOException e){
-                    FachadaJOptionsPane.exibirMensagemError("Erro ao fechar o arquivo.", null);
+                    FachadaJOptionPane.exibirMensagemError("Erro ao fechar o arquivo.", null);
                     e.printStackTrace(); // Mostra o rastreamento da exceção para diagnóstico
                 }
             }
         }
+    }
+
+    /*
+     * Verifica se o arquivo item.csv está vazio. Se não estiver, apaga todas as informações
+    */
+    public static void verificarEApagarItemCSV() {
+
+        // Abre comunicação com o arquivo
+        File arquivo = new File(Constantes.caminhoItemCSV);
+
+        // Se o tamanho do arquivo não for zero, sobrescreve o arquivo com conteúdo vazio
+        if (arquivo.length() != 0) {
+
+            // Cria um objeto escritor
+            try (FileWriter escritor = new FileWriter(Constantes.caminhoItemCSV)) {
+
+                // Sobrescreve o arquivo com conteúdo vazio
+                escritor.write("");
+            } 
+            catch (IOException e) {
+            }
+        } 
     }
 }

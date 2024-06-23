@@ -53,24 +53,40 @@ public class Pedido {
 
     /*
      * Exibe algumas informações importantes do pedido tal qual uma nota fiscal
+     * Utiliza HTML para melhorar a visibilidade na janela do JOptionsPane
     */
     @Override
     public String toString() {
-        // Cria uma instância de um construtor de String que vai guardar toda a nota fiscal
+
+        // Cria uma instância de um construtor de String que vai guardar toda a nota fiscal, adicionando cada String separadamente com o método .append()
         StringBuilder sb = new StringBuilder();
 
-        // Guarda o toString() do cliente
-        sb.append(getCliente().toString());
+        // Início do HTML
+        sb.append("<html>");
+        sb.append("<style>")
+        .append("table { width: 100%; border-collapse: collapse; }")
+        .append("th, td { border: 1px solid black; padding: 8px; text-align: left; }")
+        .append("th { background-color: #f2f2f2; }")
+        .append("</style>");
+
+        // Guarda o toString() do cliente, substituindo quebras de linha por <br> para HTML
+        sb.append(getCliente().toString().replace("\n", "<br>"));
         
-        sb.append("\nPEDIDO ").append(getId()).append(":\n");
+        sb.append("<br><br>PEDIDO ").append(getId()).append(":<br><br>");
 
-        int aux = 1; // Variável que conta o id dos itens
+        // Cabeçalho da tabela
+        sb.append("<table>")
+        .append("<tr>")
+        .append("<th>ID</th>")
+        .append("<th>NOME</th>")
+        .append("<th>QUANTIDADE</th>")
+        .append("<th>TOTAL</th>")
+        .append("</tr>");
 
-        for(Integer itemId : idItens){
-            sb.append("\tItem ").append(aux).append("\n");
+        for (Integer itemId : idItens) {
 
             // Acessando informações do item no arquivo
-            String temp[] = FachadaArquivo.lerArquivoLinha(Constantes.caminhoItemCSV, (int) itemId);
+            String temp[] = FachadaArquivo.lerArquivoLinha(Constantes.caminhoItemCSV, itemId);
             // qtd = temp[1]
             // idProduto = temp[2]
             // precoTotalItem = temp[3]
@@ -78,17 +94,27 @@ public class Pedido {
             // Acessando arquivo produto.csv para capturar o nome
             String prodNome = FachadaArquivo.lerArquivoLinha(Constantes.caminhoProdutoCSV, Integer.parseInt(temp[2]))[1];
 
-            sb.append(String.format("\t\tID%-10s NOME%-10s QUANTIDADE%-10s TOTAL\n", "", "", ""));
-            sb.append(String.format("\t\t%-12d %-14s %-20s R$%s\n", (int)itemId, prodNome, temp[1], String.format("%.2f", Float.parseFloat(temp[3]))));
-
-            aux += 1;
+            // Adição das informações dos itens na tabela
+            sb.append("<tr>")
+            .append("<td>").append(itemId).append("</td>")
+            .append("<td>").append(prodNome).append("</td>")
+            .append("<td>").append(temp[1]).append("</td>")
+            .append("<td>").append("R$").append(String.format("%.2f", Float.parseFloat(temp[3]))).append("</td>")
+            .append("</tr>");
         }
-    
-        sb.append("\n_________________________________________________________________________________________________\n");
+
+        // Fechamento da tabela e adição do preço total
+        sb.append("</table>");
+        
+        sb.append("<br>_________________________________________________________________________________________________<br>");
         sb.append("Preço total: R$").append(String.format("%.2f", getValorTotalPedido()));
-        sb.append("\n_________________________________________________________________________________________________\n");
-        sb.append("Obrigado pela preferência!");
+        sb.append("<br>_________________________________________________________________________________________________<br>");
+        sb.append("Agradecemos pela preferência!");
+
+        // Fechamento do HTML
+        sb.append("</html>");
 
         return sb.toString();
     }
+
 }
